@@ -21,7 +21,18 @@ export default StackHome = StackNavigator({
   bottomTabNav: {
     screen: bottomTabNav,
     navigationOptions: {
-      header: null,
+      headerTitle: 'FOODAWAY',
+      headerLeft: null,
+      headerStyle: {
+        backgroundColor: '#ffa726',
+      },
+      headerTitleStyle: {
+        textAlign: 'center',
+        alignSelf: 'center',
+        flex: 1,
+        color: '#ffffff'
+      }
+
     },
   }
 });
