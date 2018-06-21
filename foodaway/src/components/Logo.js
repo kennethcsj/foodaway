@@ -5,13 +5,18 @@ import {
   Text,
   View,
   Image,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  StatusBar
 } from 'react-native';
 
 export default class Logo extends Component {
   render() {
     return(
       <View style={styles.container}>
+        <StatusBar
+          backgroundColor="#ff6f00"
+          barStyle="light-content"
+        />
         <Image style={{width:130, height:90}}
           source={require('../images/logo.png')}
         />

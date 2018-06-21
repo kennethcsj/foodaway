@@ -1,20 +1,27 @@
 import { StackNavigator } from 'react-navigation';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
-import Home from '../pages/Home';
+import Deliver from '../pages/Deliver';
 import Loading from '../pages/Loading';
+import bottomTabNav from '../navigation/bottomTabNav';
 
 export default StackHome = StackNavigator({
-  Login: {
-    screen: Login
-  },
   Loading: {
     screen: Loading
+  },
+  Login: {
+    screen: Login
   },
   Signup: {
     screen: Signup
   },
-  Home: {
-    screen: Home
+  Deliver: {
+    screen: Deliver
+  },
+  bottomTabNav: {
+    screen: bottomTabNav,
+    navigationOptions: {
+      header: null,
+    },
   }
 });

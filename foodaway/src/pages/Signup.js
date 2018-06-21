@@ -22,7 +22,7 @@ export default class Signup extends Component {
     const { email, password } = this.state;
       firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(() => {this.props.navigation.navigate('Login')})
-      .catch((error) => {const { code, message } = error;});
+      .catch((error) => {alert( error.toString() )});
   }
 
   render() {

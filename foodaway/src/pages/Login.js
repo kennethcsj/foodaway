@@ -19,11 +19,11 @@ export default class Login extends Component {
 
   state = { email: '', password: '', errorMessage: null }
 
-  handle = () => {
+  onLogin = () => {
     const { email, password } = this.state;
       firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(() => {this.props.navigation.navigate('Home')})
-      .catch((error) => {const { code, message } = error;});
+      .then(() => {this.props.navigation.navigate('bottomTabNav')})
+      .catch((error) => {alert( error.toString() )});
   }
 
   render() {
@@ -45,7 +45,7 @@ export default class Login extends Component {
             onChangeText = { password => this.setState({ password })}
             value = { this.state.password }
           />
-          <TouchableOpacity onPress={this.handle} style = {styles.button}>
+        <TouchableOpacity onPress={this.onLogin} style = {styles.button}>
             <Text style = {styles.buttonText}>Login</Text>
           </TouchableOpacity>
         <View style = {styles.loginTextCont}>
