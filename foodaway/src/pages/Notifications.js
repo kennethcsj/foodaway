@@ -5,7 +5,9 @@ import {
   Text,
   View,
   KeyboardAvoidingView,
-  TouchableOpacity
+  TouchableOpacity,
+  Image,
+  FlatList
 } from 'react-native';
 
 import * as firebase from 'firebase';
@@ -46,25 +48,55 @@ export default class Notifications extends Component {
 }
 
 const styles = StyleSheet.create({
+  root: {
+    backgroundColor: "#FFFFFF"
+  },
   container: {
+    padding: 16,
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderColor: "#FFFFFF",
+    alignItems: 'flex-start'
+  },
+  avatar: {
+    width:50,
+    height:50,
+    borderRadius:25,
+  },
+  text: {
+    marginBottom: 5,
+    flexDirection: 'row',
+    flexWrap:'wrap'
+  },
+  content: {
     flex: 1,
-    backgroundColor: '#ffffff',
-    justifyContent: 'center',
-    alignItems: 'center'
+    marginLeft: 16,
+    marginRight: 0
   },
-
-  button: {
-    width: 300,
-    backgroundColor: '#ff6f00',
-    borderRadius: 20,
-    marginVertical: 10,
-    paddingVertical: 12,
+  mainContent: {
+    marginRight: 60
   },
-
-  buttonText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#ffffff',
-    textAlign: 'center'
+  img: {
+    height: 50,
+    width: 50,
+    margin: 0
   },
-})
+  attachment: {
+    position: 'absolute',
+    right: 0,
+    height: 50,
+    width: 50
+  },
+  separator: {
+    height: 1,
+    backgroundColor: "#CCCCCC"
+  },
+  timeAgo:{
+    fontSize:12,
+    color:"#696969"
+  },
+  name:{
+    fontSize:16,
+    color:"#1E90FF"
+  }
+});
