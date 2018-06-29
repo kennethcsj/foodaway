@@ -23,27 +23,56 @@ export default class Notifications extends Component {
     const { currentUser } = firebase.auth()
     this.setState({ currentUser })
   }
+  constructor(props) {
+  super(props);
+  this.state = {
+    data:[
+      {id:3, image: "https://bootdey.com/img/Content/avatar/avatar7.png", name:"Admin", text:"Hello" , attachment:"https://lorempixel.com/100/100/nature/6/"},
+    ]}}
 
-  onLogout = () => {
-    firebase.auth().signOut()
-    .then(() => {this.props.navigation.navigate('Loading')})
-    .catch((error) => {const { code, message } = error;});
-  }
 
   render() {
-    const { currentUser } = this.state
-
     return (
-      <View style={styles.container}>
-        <Text>
-          Hi {currentUser && currentUser.email}!
-          Notifications
-        </Text>
-        <TouchableOpacity onPress={this.onLogout} style = {styles.button}>
-          <Text style = {styles.buttonText}>Logout</Text>
-        </TouchableOpacity>
-      </View>
-    )
+      <FlatList
+        style={styles.root}
+        data={this.state.data}
+        extraData={this.state}
+        ItemSeparatorComponent={() => {
+          return (
+            <View style={styles.separator}/>
+          )
+        }}
+        keyExtractor={(item)=>{
+          return item.id;
+        }}
+        renderItem={(item) => {
+          const Notification = item.item;
+          let attachment = <View/>;
+
+          let mainContentStyle;
+          if(Notification.attachment) {
+            mainContentStyle = styles.mainContent;
+            attachment = <Image style={styles.attachment} source={{uri:Notification.attachment}}/>
+          }
+          return(
+            <View style={styles.container}>
+              <Image source={{uri:Notification.image}} style={styles.avatar}/>
+              <View style={styles.content}>
+                <View style={mainContentStyle}>
+                  <View style={styles.text}>
+                    <Text style={styles.name}>{Notification.name}</Text>
+                    <Text>{Notification.text} </Text>
+                  </View>
+                  <Text style={styles.timeAgo}>
+                    2 hours ago
+                  </Text>
+                </View>
+                {attachment}
+              </View>
+            </View>
+          );
+        }}/>
+    );
   }
 }
 
